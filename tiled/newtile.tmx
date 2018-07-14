@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="20" tileheight="20" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="minigolf" tilewidth="188" tileheight="135" tilecount="9" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="53" height="54" source="../texture/object/grass1.jpg"/>
+  </tile>
+  <tile id="1">
+   <image width="20" height="20" source="../texture/object/grass1.png"/>
+  </tile>
+  <tile id="2">
+   <image width="20" height="20" source="../texture/object/grass1_2wall.png"/>
+  </tile>
+  <tile id="3">
+   <image width="20" height="20" source="../texture/object/grass1_wall.png"/>
+  </tile>
+  <tile id="4">
+   <image width="11" height="52" source="../texture/object/left_wall_52x11_grad.png"/>
+  </tile>
+  <tile id="5">
+   <image width="124" height="135" source="../texture/object/maly_kopec.jpg"/>
+  </tile>
+  <tile id="6">
+   <image width="188" height="134" source="../texture/object/velky_kopec.jpg"/>
+  </tile>
+  <tile id="7">
+   <image width="20" height="20" source="../texture/object/wall.png"/>
+  </tile>
+  <tile id="8">
+   <image width="11" height="52" source="../texture/object/wall_11x52.png"/>
+  </tile>
+ </tileset>
+ <layer name="Vrstva dlaždic 1" width="10" height="10">
+  <data>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="2684354563"/>
+   <tile gid="3221225475"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="3"/>
+   <tile gid="1610612739"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+  </data>
+ </layer>
+</map>

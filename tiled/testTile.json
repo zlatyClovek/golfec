@@ -1,0 +1,52 @@
+{ "height":100,
+ "infinite":false,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJztzjENACAQBMErEIo0pCANktdAnmIm2X4TAAAAAAAAAAAAAAAAAAAAAAAAfjaSddvdH5RRze4PAAAAAAAAAAAAAAAAAAAAAAAAAOCdA7WMAdE=",
+         "encoding":"base64",
+         "height":100,
+         "name":"Vrstva dla\u017edic 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":100,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.1.5",
+ "tileheight":20,
+ "tilesets":[
+        {
+         "columns":1,
+         "firstgid":1,
+         "image":"..\/Documents\/Corona Projects\/Minigolf\/texture\/object\/grass1.png",
+         "imageheight":20,
+         "imagewidth":20,
+         "margin":0,
+         "name":"grass1",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":20,
+         "tilewidth":20
+        }, 
+        {
+         "firstgid":2,
+         "source":"wall.json"
+        }, 
+        {
+         "firstgid":3,
+         "source":"grass1 wall.tsx"
+        }, 
+        {
+         "firstgid":4,
+         "source":"grass1_2wall.json"
+        }],
+ "tilewidth":20,
+ "type":"map",
+ "version":1,
+ "width":100
+}
