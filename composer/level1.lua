@@ -3,6 +3,7 @@ local composer = require( "composer" )
 
 local scene = composer.newScene()
 
+
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -19,8 +20,10 @@ display.setStatusBar( display.HiddenStatusBar )
 -- ----------------------------------------------------------------------------
 -- Load sounds
 local ballHitSound = audio.loadSound( "audio/ballHit.wav" )
-local ouchSound = audio.loadSound( "audio/ouch.wav" )
-audio.setVolume( 0.3, { channel=0 } )
+local wallHitSound = audio.loadSound( "audio/wallHit.wav" )
+local sandSound = audio.loadSound( "audio/sandFall.wav" )
+audio.setVolume( 0.5, { ballHitSound } )
+
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------
 -- Predeclare objects
@@ -43,6 +46,8 @@ local maxSpeedToScore = 300 -- Maximum ball speed to fall into hole
 local ballScored = false
 local maxPower = 500 -- Maximum possible power of stroke
 local stroke -- Predeclared function
+local currentBallSurface = "grass" -- Should contain name of object that ball is standing on (grass, sand etc.)
+local minSpeedToPlayWallHit = 30
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------
 -- Set up display groups
@@ -56,7 +61,7 @@ local uiGroup
 -- HELP FUNCTIONS
 
 local function gotoMenu()
-    composer.gotoScene( "menu", { time=800, effect="crossFade" } )
+    composer.gotoScene( "composer.menu", { time=400, effect="crossFade" } )
 end
 
 -- Handles game end scenarios like no strokes left or ball scoring
@@ -82,6 +87,11 @@ function getDistance( event )
     return math.sqrt( (xDist ^ 2) + (yDist ^ 2) )
 end
 
+--Plays given sound with given volume
+local function playSound( sound, volume )
+  audio.setVolume( volume )
+  audio.play( sound )
+end
 -- Updates strokes left
 local function updateText()
     strokesText.text = "Strokes: " .. strokes
@@ -138,14 +148,29 @@ local function onCollision( event )
     local obj1 = event.object1
     local obj2 = event.object2
         if ( ( obj1.myName == "wall" and obj2.myName == "ball" ) or ( obj1.myName == "ball" and obj2.myName == "wall" ) ) then
-						audio.play(ouchSound)
+          local currX, currY = ball:getLinearVelocity()
+          if currX < 0 then
+            currX = currX * -1
+          end
+          if currY < 0 then
+            currY = currY * -1
+          end
+          if currX > minSpeedToPlayWallHit or currY > minSpeedToPlayWallHit then
+            playSound( wallHitSound, 1)
+          end
         end
 
         if ( ( obj1.myName == "sand" and obj2.myName == "ball" ) or ( obj1.myName == "ball" and obj2.myName == "sand" ) ) then
 						ball.linearDamping = linDampingSand
+            if ( currentBallSurface == "grass" ) then
+              playSound( sandSound, 0.3)
+            end
+
+            currentBallSurface = "sand"
         end
         if ( ( obj1.myName == "grass" and obj2.myName == "ball" ) or ( obj1.myName == "ball" and obj2.myName == "grass" ) ) then
 						ball.linearDamping = linDamping
+            currentBallSurface = "grass"
         end
         --When ball and hole colides
         if ( ( obj1.myName == "hole" and obj2.myName == "ball" ) or ( obj1.myName == "ball" and obj2.myName == "hole" ) ) then
@@ -201,7 +226,7 @@ function stroke(event)
     end
 
 	elseif event.phase == "ended" then
-    audio.play(ballHitSound)
+    playSound( ballHitSound, 1.5)
     backGroup:removeEventListener ( "touch", stroke ) -- Cant shoot while moving
 
     endX = event.x
@@ -342,7 +367,7 @@ function scene:hide( event )
 		Runtime:removeEventListener( "collision", onCollision )
 		physics:pause()
 		display.remove(map)
-		composer.removeScene( "level1" )
+		composer.removeScene( "composer.level1" )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen

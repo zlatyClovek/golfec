@@ -13,7 +13,7 @@ local function gotoGame()
 end
 
 local function gotoLevelSelect()
-    composer.gotoScene( "levelSelect" )
+    composer.gotoScene( "composer.level1", { time=100, effect="flip" } )
 end
 
 local function gotoHighScores()
