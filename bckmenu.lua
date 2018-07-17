@@ -9,7 +9,7 @@ local scene = composer.newScene()
 -- -----------------------------------------------------------------------------------
 
 local function gotoGame()
-    composer.gotoScene( "composer.level1", { time=100, effect="flip" } )
+    composer.gotoScene( "level1", { time=100, effect="flip" } )
 end
 
 local function gotoLevelSelect()
